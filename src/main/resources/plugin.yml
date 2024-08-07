@@ -1,0 +1,14 @@
+name: SimpleShop
+main: xyz.acrylicstyle.simpleshop.SimpleShop
+version: 1.0.0-SNAPSHOT
+api-version: 1.13
+depend:
+  - Vault
+softdepend:
+  - LifeCore
+commands:
+  shop:
+    permission: simpleshop.command.shop
+    aliases: [ss, simpleshop]
+  sell:
+    permission: simpleshop.command.sell
