@@ -52,22 +52,18 @@ public class SimpleShop extends JavaPlugin {
                 if (o instanceof Map) {
                     Map<String, Object> map = (Map<String, Object>) o;
                     Material material = Material.getMaterial((String) map.get("material"));
-                    int amount = (int) map.get("amount");
                     int buy = (int) map.get("buy");
                     int sell = (int) map.get("sell");
-                    String command = (String) map.get("command");
-                    ShopData data = new ShopData(material, amount, buy, sell, command);
+                    ShopData data = new ShopData(material, buy, sell);
                     shops.computeIfAbsent(name, k -> new ArrayList<>()).add(data);
                 } else if (o instanceof String) {
-                    // material[;amount];buy;sell[;command]
+                    // material;buy;sell[;command]
                     String s = (String) o;
                     String[] split = s.split(";");
                     Material material = Material.valueOf(split[0]);
-                    int amount = split.length == 3 ? 1 : Integer.parseInt(split[1]);
-                    int buy = Integer.parseInt(split[split.length == 3 ? 1 : 2]);
-                    int sell = Integer.parseInt(split[split.length == 3 ? 2 : 3]);
-                    String command = split.length <= 4 ? null : split[4];
-                    ShopData data = new ShopData(material, amount, buy, sell, command);
+                    int buy = Integer.parseInt(split[1]);
+                    int sell = Integer.parseInt(split[2]);
+                    ShopData data = new ShopData(material, buy, sell);
                     shops.computeIfAbsent(name, k -> new ArrayList<>()).add(data);
                 }
             }
