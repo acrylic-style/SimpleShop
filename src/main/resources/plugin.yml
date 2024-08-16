@@ -12,3 +12,10 @@ commands:
     aliases: [ss, simpleshop]
   sell:
     permission: simpleshop.command.sell
+permissions:
+  simpleshop.command.shop:
+    description: Allows you to open the shop
+    default: true
+  simpleshop.command.sell:
+    description: Allows you to sell items
+    default: true
